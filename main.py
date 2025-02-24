@@ -13,6 +13,7 @@ ImageDraw.ImageDraw.font = BASE_FONT
 class MyExceptionHandler(telebot.ExceptionHandler):
     async def handle(self, exc: Exception):
         message = None
+        inline_query = None
         reply_markup = None
         tb = exc.__traceback__
         while (tb := tb.tb_next):
