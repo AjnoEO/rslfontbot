@@ -47,7 +47,8 @@ def get_wrapped_text(text: str | list[str], font: ImageFont.ImageFont,
                      line_length: int):
     lines = ['']
     if isinstance(text, str):
-        text = text.split()
+        text.replace('\n', ' \n ')
+        text = text.split(' ')
     while text:
         word = text.pop(0)
         line = f'{lines[-1]} {word}'.strip()
@@ -63,6 +64,8 @@ def get_wrapped_text(text: str | list[str], font: ImageFont.ImageFont,
                 word = word[1:]
             lines[-1] = line
             text = [word] + text
+    if not lines[0] or lines[0].isspace():
+        lines.pop(0)
     return '\n'.join(lines)
 
 def draw_text(draw: ImageDraw.ImageDraw, text: str | list[str],
