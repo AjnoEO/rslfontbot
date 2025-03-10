@@ -93,7 +93,7 @@ async def handle_query(inline_query: t.InlineQuery):
     u.draw_text(draw, wrapped, BASE_FONT, MAX_LINE_LEN, margins, already_wrapped=True)
     file_id = await u.save_temporarily(image, bot, IMAGE_CHAT)
     result = t.InlineQueryResultPhoto("1", file_id, file_id, caption=f"<code>{escape_html(text)}</code>", parse_mode="HTML")
-    await bot.answer_inline_query(inline_query.id, [result])
+    await bot.answer_inline_query(inline_query.id, [result], cache_time=0)
 
 print("Запускаю бота...")
 asyncio.run(bot.polling())
