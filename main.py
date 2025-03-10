@@ -55,7 +55,8 @@ class MyExceptionHandler(telebot.ExceptionHandler):
                     "0", "Ошибка",
                     t.InputTextMessageContent(error_message, parse_mode="HTML"),
                     description=error_message
-                )]
+                )],
+                cache_time=0
             )
         return handled
 
