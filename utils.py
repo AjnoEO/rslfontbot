@@ -47,7 +47,7 @@ def get_wrapped_text(text: str | list[str], font: ImageFont.ImageFont,
                      line_length: int):
     lines = ['']
     if isinstance(text, str):
-        text.replace('\n', ' \n ')
+        text = text.replace('\n', ' \n ')
         text = text.split(' ')
     while text:
         word = text.pop(0)
